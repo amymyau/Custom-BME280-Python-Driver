@@ -1,7 +1,10 @@
 
 # Custom-BME280-Python-Driver
+
 This project features a lightweight, custom Python driver designed to interface a Raspberry Pi 4 with the BME280 environmental sensor via the I2C bus.
-Project Highlights
+
+# Project Highlights
+
 Low-Level I2C Communication: Built using the smbus2 library to handle raw data transfer between the Broadcom BCM2711 SoC and the sensor.
 
 Hardware Abstraction: Implements a read_temp_driver() function that encapsulates the complexity of opening the I2C bus (/dev/i2c-1), sampling raw data, and handling device resources using Python context managers (with SMBus...).
@@ -15,21 +18,35 @@ Calibration: It retrieves factory-set calibration parameters from the BME280's n
 
 Data Processing: Raw digital signals for temperature, pressure, and humidity are read from the sensor registers and converted into human-readable metric units.
 
-Prerequisites
-Hardware: Raspberry Pi 4, BME280 Sensor.
+====================================
+Installation & Usage
 
-OS: Ubuntu / Raspberry Pi OS (I2C interface enabled).
+ **Enable I2C:**
+   # bash
+   # sudo raspi-config # Interface Options -> I2C -> Enable
+ **Set Permissions**
+   Allow the current user to access hardware without sudo:
+   # bash
+   # sudo usermod -aG i2c $USER newgrp i2c
+**Install Dependencies**
+   # bash
+   # pip install smbus2
+**Run Driver**
+   # bash
+   # python3 I2C_BME280/hardware.py
 
-Dependencies: smbus2, python-bme280.
 
+====================================
+"Known Issues & Fixes"
+====================================
 linux group permission error:
 Python script is trying to talk to the I2C hardware at /dev/i2c-1, but by default, Ubuntu only allows the root user (or members of the i2c group) to touch that file.
 give the user account permission to use the I2C bus permanently
 Add your user to the group:
 sudo usermod -aG i2c $USER 
 
+Encountered inaccurate environmental data during the integration of a BME280 sensor, where the temperature output was consistently near-freezing (1.1°C) despite ambient room conditions
+Refactored the sensor driver to correctly read the factory calibration parameters upon initialization
 
-
-OS: Ubuntu / Raspberry Pi OS (I2C interface enabled).
 
 Dependencies: smbus2, python-bme280.
