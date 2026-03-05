@@ -46,7 +46,11 @@ Note: If you see temperature readings near 1°C on a warm day, ensure you have p
 # Technical Decision
 
 Hardware Integration & Safety SummaryThe Issue: 
-The BME280 breakout board is marketed as a "5V part" because it includes an XC6206 (662K) LDO regulator and MOSFET-based logic level shifters. While this allows it to work with 5V microcontrollers, the Raspberry Pi's GPIO pins are strictly 3.3V tolerant.The Risk: Powering the module with 5V causes the onboard level shifters to pull the I2C bus (SDA/SCL) toward 5V. Over time, this "over-voltage" on the Pi’s processor pins can lead to hardware degradation or immediate failure.
+
+The BME280 breakout board is marketed as a "5V part" because it includes an XC6206 (662K) LDO regulator and MOSFET-based logic level shifters. While this allows it to work with 5V microcontrollers, the Raspberry Pi's GPIO pins are strictly 3.3V tolerant.
+
+The Risk: Powering the module with 5V causes the onboard level shifters to pull the I2C bus (SDA/SCL) toward 5V. Over time, this "over-voltage" on the Pi’s processor pins can lead to hardware degradation or immediate failure.
+
 The Solution: * Moved the $V_{IN}$ connection from the Pi's 5V rail to the 3.3V rail.Result: Since the BME280 chip operates down to 1.71V, the small voltage drop across the 662K regulator still leaves plenty of overhead for the sensor to function perfectly, while ensuring the I2C logic levels never exceed the Pi's 3.3V limit.
 
 # Known Issues & Fixes
