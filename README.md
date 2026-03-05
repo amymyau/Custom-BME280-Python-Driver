@@ -21,20 +21,27 @@ Data Processing: Raw digital signals for temperature, pressure, and humidity are
 
 # Installation & Usage
 
-Enable I2C
-   bash
-   sudo raspi-config # Interface Options -> I2C -> Enable
-Set Permissions
-   Allow the current user to access hardware without sudo:
-   bash
-   sudo usermod -aG i2c $USER newgrp i2c
-Install Dependencies
-   bash
-   pip install smbus2
-Run Driver
-   bash
-   python3 I2C_BME280/hardware.py
+```bash
+1. Enable I2C
+Open the Raspberry Pi configuration tool to enable the I2C interface:
+sudo raspi-config
+# Navigate to: Interface Options -> I2C -> Enable
 
+2. Set Permissions
+Allow the current user to access the I2C hardware without needing sudo every time:
+sudo usermod -aG i2c $USER
+newgrp i2c
+
+3. Install Dependencies
+pip install smbus2
+
+4. Run the Driver
+Execute the hardware script to begin reading temperature, pressure, and humidity:
+python3 I2C_BME280/hardware.py
+
+Note: If you see temperature readings near 1°C on a warm day, ensure you have pulled the latest version. The driver now includes the mandatory factory calibration coefficient logic (BME280 Datasheet Section 4.2).
+
+```
 
 # Known Issues & Fixes
 
