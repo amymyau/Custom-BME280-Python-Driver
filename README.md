@@ -33,7 +33,7 @@ sudo usermod -aG i2c $USER
 newgrp i2c
 
 3. Install Dependencies
-pip install smbus2
+pip install -r requirements.txt
 
 4. Run the Driver
 Execute the hardware script to begin reading temperature, pressure, and humidity:
