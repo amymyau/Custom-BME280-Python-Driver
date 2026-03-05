@@ -69,9 +69,12 @@ Refactored the sensor driver to correctly read the factory calibration parameter
 
 The BME280 is a combined digital humidity, pressure, and temperature sensor. This driver implements the factory-trimming compensation logic required for high-accuracy readings.
 
-Parameter       Range                   Accuracy
-Temperature	    -40°C to +85°C	        ±1.0°C
-Humidity	      0% to 100% RH	          ±3% RH
-Pressure	      300 hPa to 1100 hPa	    ±1.0 hPa
-I2C Address	    0x76 (default) or 0x77	N/A
-Supply Voltage	1.71V to 3.6V	N/A
+### Technical Specifications
+
+| Parameter | Range | Accuracy |
+| :--- | :--- | :--- |
+| **Temperature** | -40°C to +85°C | ±1.0°C |
+| **Humidity** | 0% to 100% RH | ±3% RH |
+| **Pressure** | 300 hPa to 1100 hPa | ±1.0 hPa |
+| **I2C Address** | 0x76 (default) or 0x77 | N/A |
+| **Supply Voltage** | 1.71V to 3.6V (Chip) | N/A |
