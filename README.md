@@ -21,20 +21,19 @@ Data Processing: Raw digital signals for temperature, pressure, and humidity are
 
 # Installation & Usage
 
- **Enable I2C:**
-   # bash
-   # sudo raspi-config # Interface Options -> I2C -> Enable
- **Set Permissions**
+Enable I2C
+   bash
+   sudo raspi-config # Interface Options -> I2C -> Enable
+Set Permissions
    Allow the current user to access hardware without sudo:
-   # bash
-   # sudo usermod -aG i2c $USER newgrp i2c
-**Install Dependencies**
-   # bash
-   # pip install smbus2
-**Run Driver**
-   # bash
-   # python3 I2C_BME280/hardware.py
-
+   bash
+   sudo usermod -aG i2c $USER newgrp i2c
+Install Dependencies
+   bash
+   pip install smbus2
+Run Driver
+   bash
+   python3 I2C_BME280/hardware.py
 
 
 # Known Issues & Fixes
