@@ -18,8 +18,8 @@ Calibration: It retrieves factory-set calibration parameters from the BME280's n
 
 Data Processing: Raw digital signals for temperature, pressure, and humidity are read from the sensor registers and converted into human-readable metric units.
 
-====================================
-Installation & Usage
+
+# Installation & Usage
 
  **Enable I2C:**
    # bash
@@ -36,9 +36,9 @@ Installation & Usage
    # python3 I2C_BME280/hardware.py
 
 
-====================================
-"Known Issues & Fixes"
-====================================
+
+# Known Issues & Fixes
+
 linux group permission error:
 Python script is trying to talk to the I2C hardware at /dev/i2c-1, but by default, Ubuntu only allows the root user (or members of the i2c group) to touch that file.
 give the user account permission to use the I2C bus permanently
@@ -48,5 +48,3 @@ sudo usermod -aG i2c $USER
 Encountered inaccurate environmental data during the integration of a BME280 sensor, where the temperature output was consistently near-freezing (1.1°C) despite ambient room conditions
 Refactored the sensor driver to correctly read the factory calibration parameters upon initialization
 
-
-Dependencies: smbus2, python-bme280.
