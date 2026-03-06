@@ -84,11 +84,10 @@ Since the Raspberry Pi GPIO pins are **not 5V tolerant**, this project uses the 
 
 | BME280 Pin | Raspberry Pi Pin | Function |
 | :--- | :--- | :--- |
-| **VIN** | **Pin 1** | 3.3V Power |
-| **GND** | **Pin 9** | Ground |
-| **SCL** | **Pin 5** | I2C Clock (SCL) |
-| **SDA** | **Pin 3** | I2C Data (SDA) |
-
+| **VIN** | Pin 1 (3.3V) | Power Source |
+| **GND** | Pin 9 | Ground |
+| **SCL** | Pin 5 | I2C Clock |
+| **SDA** | Pin 3 | I2C Data |
 
 > **Why Pin 1 instead of Pin 2?** > While the breakout board includes a **662K (3.3V LDO)** regulator that *can* handle 5V, using **Pin 1 (3.3V)** ensures that the onboard pull-up resistors reference a 3.3V source. This prevents 5V logic "leakage" into the Pi's SDA/SCL lines, protecting the Pi's processor from long-term damage.
 
