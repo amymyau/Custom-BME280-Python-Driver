@@ -63,6 +63,8 @@ The Risk: Powering the module with 5V causes the onboard level shifters to pull 
 
 The Solution: * Moved the $V_{IN}$ connection from the Pi's 5V rail to the 3.3V rail.Result: Since the BME280 chip operates down to 1.71V, the small voltage drop across the 662K regulator still leaves plenty of overhead for the sensor to function perfectly, while ensuring the I2C logic levels never exceed the Pi's 3.3V limit.
 
+![Wiring Diagram](wiring.jpg)
+
 # Known Issues & Fixes
 
 linux group permission error:
