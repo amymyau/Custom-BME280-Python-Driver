@@ -1,4 +1,22 @@
 
+## 🚀 Recent Enhancements
+
+I have upgraded the BME280 driver from a basic temperature-only script to a full-featured environmental monitoring tool. 
+
+### 🛠 Key Improvements
+* **Full Sensor Support**: Added compensation logic for **Humidity** (%) and **Barometric Pressure** (hPa).
+* **Power Optimization (Forced Mode)**: Configured the sensor to use "Forced Mode." The chip now triggers a measurement, delivers data, and immediately enters **Sleep Mode (~0.1 µA consumption)** between reads, making it ideal for battery-powered Raspberry Pi projects.
+* **Data Integrity (Burst Reads)**: Implemented an 8-byte burst read across the I2C bus. This ensures that Temperature, Pressure, and Humidity values are captured at the exact same millisecond to prevent "data skew."
+* **Refined Calibration**: Integrated all 18 internal factory-trimmed calibration registers ($P_1$-$P_9$ and $H_1$-$H_6$) for high-precision output.
+
+
+
+### 📊 Data Output Example
+```text
+Temp: 22.45°C | Pressure: 1013.25hPa | Humidity: 45.2%
+Status: Sensor entering Sleep Mode to save power...
+
+
 # Custom-BME280-Python-Driver
 
 This project features a lightweight, custom Python driver designed to interface a Raspberry Pi 4 with the BME280 environmental sensor via the I2C bus.
